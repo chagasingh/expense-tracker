@@ -15,7 +15,10 @@ function App() {
         <Route path="/" exact>
           <AuthForm />
         </Route>
-        <Route path="/home" exact>
+        <Route path="/login">
+          <AuthForm />
+        </Route>
+        <Route path="/home">
           <StartingPageContent />
         </Route>
         <Route path="/profile">
