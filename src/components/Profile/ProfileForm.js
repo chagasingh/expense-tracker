@@ -5,20 +5,23 @@ import AuthContext from '../../store/auth-context';
 
 const ProfileForm = () => {
   const history=useHistory();
-  const newPasswordInputRef=useRef();
+  const nameInputRef=useRef();
+  const imageUrlRef=useRef();
   const AuthCtx=useContext(AuthContext);
 
   const submitHandler=(event)=>{
     event.preventDefault();
 
-    const enteredNewPassword=newPasswordInputRef.current.value;
+    const enteredName=nameInputRef.current.value;
+    const enteredImageUrl=imageUrlRef.current.value;
 
     fetch("https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyCdVdERwY8R0pWYqhtuP3-j712UDKCGo78",
     {
       method: 'POST',
       body: JSON.stringify({
         idToken: AuthCtx.token,
-        password: enteredNewPassword,
+        displayName: enteredName,
+        photoUrl: enteredImageUrl,
         returnSecureToken: true,
       }),
       headers: {
@@ -26,19 +29,25 @@ const ProfileForm = () => {
       },
     }).then(res=>{
       //assume always succed
-      history.replace('/')
+      console.log("updated to firebase")
+      history.replace('/home')
     })
 
   }
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
+      <div className={classes.text}><h1>Complete Your Profile</h1><br/></div>
       <div className={classes.control}>
-        <label htmlFor='new-password'>New Password</label>
-        <input type='password' id='new-password' minLength='7' ref={newPasswordInputRef}/>
+        <label htmlFor='name'>Your Name:</label>
+        <input type='name' id='name' required ref={nameInputRef}/>
+      </div>
+      <div className={classes.control}>
+        <label htmlFor='image-url'>Profile Photo Url:</label>
+        <input type='text' id='image-url' required  ref={imageUrlRef}/>
       </div>
       <div className={classes.action}>
-        <button>Change Password</button>
+        <button>Update</button>
       </div>
     </form>
   );

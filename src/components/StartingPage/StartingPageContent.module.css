@@ -6,3 +6,9 @@
 .starting h1 {
   font-size: 5rem;
 }
+.starting h3 {
+  color:red;
+}
+.starting h4 {
+  color: green;
+}
