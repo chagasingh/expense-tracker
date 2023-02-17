@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../store/auth-context';
 
@@ -8,9 +8,45 @@ const MainNavigation = () => {
     const AuthCtx=useContext(AuthContext)
     const isLoggedIn=AuthCtx.isLoggedIn;
 
-        const logoutHandler=()=>{
-            AuthCtx.logout();
+  useEffect(() => {
+    fetch(
+      "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCdVdERwY8R0pWYqhtuP3-j712UDKCGo78",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          idToken: AuthCtx.token,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          return res.json().then((data) => {
+            let errorMessage = "Authentication failed";
+            if (data && data.error && data.error.message) {
+              errorMessage = data.error.message;
+            }
+            throw new Error(errorMessage);
+          });
         }
+      })
+      .then((data) => {
+        AuthCtx.ProfileDetails(data);
+        console.log("use effect is running")
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }, [isLoggedIn]);
+
+
+  const logoutHandler=()=>{
+      AuthCtx.logout();
+      }
 
   return (
     <header className={classes.header}>
