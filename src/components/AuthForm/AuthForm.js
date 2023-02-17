@@ -1,6 +1,7 @@
 import { useState, useRef ,useContext} from "react";
 import AuthContext from "../../store/auth-context";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import classes from "./AuthForm.module.css";
 
@@ -93,6 +94,7 @@ let url;
         <div className={classes.actions}>
         {!isLoading && <button>{isLogin ? "Login" : "Create Account"}</button>} 
         {isLoading && <p>Sending request...</p>}
+        <Link to='/forgot'>Forgot Password?</Link>
           <button
             type="button"
             className={classes.toggle}

@@ -6,6 +6,7 @@ import AuthForm from './components/AuthForm/AuthForm'
 import ProfileForm from './components/Profile/ProfileForm';
 import Layout from './components/Layout/Layout';
 import StartingPageContent from './components/StartingPage/StartingPageContent';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword'
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route path="/profile">
           <ProfileForm />
+        </Route>
+        <Route path="/forgot">
+          <ForgotPassword/>
         </Route>
       </Switch>
     </Fragment>
