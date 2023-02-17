@@ -57,7 +57,7 @@ let url;
       })
       .then((data)=>{
         AuthCtx.login(data.idToken)
-        history.replace('/')
+        history.replace('/home')
       })
       .catch((err)=>{
         alert(err.message)
