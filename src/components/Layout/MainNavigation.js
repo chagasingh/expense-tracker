@@ -41,7 +41,7 @@ const MainNavigation = () => {
         console.log("use effect is running")
       })
       .catch((err) => {
-        alert(err.message);
+        console.log(err.message);
       });
   }, [isLoggedIn]);
 
