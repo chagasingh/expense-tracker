@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
-import ExpenseShow from '../Expense/ExpenseShow';
+import ExpenseForm from '../Expense/ExpenseForm';
+
 import VerifyEmailForm from '../VerifyEmail/VerifyEmailForm';
 import classes from './StartingPageContent.module.css';
 
@@ -12,7 +13,7 @@ const StartingPageContent = () => {
       <VerifyEmailForm/><br/>
       <h3>Complete Your Profile as Soon as Possible...</h3>
       <h4>If done then ignore this message</h4>
-      <ExpenseShow/>
+      <ExpenseForm/>
     </section>
     
     </Fragment>

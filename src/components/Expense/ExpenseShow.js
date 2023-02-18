@@ -1,72 +1,57 @@
-import { Fragment ,useContext,useState,useEffect} from "react";
-import AuthContext from "../../store/auth-context";
-import ExpenseForm from "./ExpenseForm";
-import ExpenseInput from "./ExpenseInput";
+// import React, { useCallback, useContext, useEffect, useState } from "react";
+// import AuthContext from "../store/AuthContext";
+// import PageHeader from "./PageHeader";
+// import classes from "./ProfileForm.module.css";
+// import ExpenseForm from "./ExpenseForm";
+// import ExpenseInput from "./ExpenseInput";
 
-const ExpenseShow=()=>{
+// function ExpensePage() {
+//   const authCtx = useContext(AuthContext);
 
-  const AuthCtx=useContext(AuthContext);
-  const [printexpense, setPrintExpense] = useState([]);
-  const [getdata, setGetdata] = useState([]);
-useEffect(()=>{
-  async function fetchExpenses(){
-    try{
-      const res = await fetch('https://react-movie-c353a-default-rtdb.firebaseio.com/Expense.json',{
-        method:"GET",
-        headers:{
-          "Content-Type": "application/json"
-        },
-      })
-      const data = await res.json();
-      if(res.ok){
-        const newdata = [];
-        for(let key in data){
-          newdata.push({id:key,...data[key]});
-        }
-        setGetdata(newdata)
-        setPrintExpense(newdata)
-      }else{
-        throw data.error
-      }
-    }catch(error){
-      console.log(error.message)
-    }
-  }
-  fetchExpenses()
+//   const submitHandler = (event) => {
+//     event.preventDefault();
 
-},[])
- 
-console.log(getdata,'from expenseShow useeffect get data')
+//     fetch(
+//       "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDcPWz5JxqUMyayXb7x_M4yzUlvx2qQeJ8",
+//       {
+//         method: "POST",
+//         body: JSON.stringify({
+//           requestType: "VERIFY_EMAIL",
+//           idToken: authCtx.tokenid,
+//         }),
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     )
+//       .then((res) => {
+//         if (res.ok) {
+//           return res.json();
+//         } else {
+//           return res.json().then((data) => {
+//             let errormessage = "Authentication failed";
+//             if (data && data.error && data.error.message) {
+//               errormessage = data.error.message;
+//             }
+//             throw new Error(errormessage);
+//           });
+//         }
+//       })
+//       .then((data) => {
+//         console.log(data);
+//         alert("success");
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//         alert(err.message);
+//       });
+//   };
 
+//   return (
+//     <React.Fragment>
+//       <ExpenseForm></ExpenseForm>
+//     </React.Fragment>
+//   );
+// }
 
-
-  const inputvalueHandler = (expense) => {
-
-    fetch("https://react-movie-c353a-default-rtdb.firebaseio.com/Expense.json", {
-      method: "POST",
-      body: JSON.stringify(expense),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        console.log(res, "form post data");
-        return res.json();
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-
-    setPrintExpense((prevexpense) => {
-      return [expense, ...prevexpense];
-    });
-  };
-  console.log(printexpense, "from expneseshow page");
-  return (
-    <Fragment>
-      <ExpenseForm ondata={inputvalueHandler}></ExpenseForm>
-      <ExpenseInput printexpense={printexpense}></ExpenseInput>
-    </Fragment>
-  );
-}
-export default ExpenseShow;
+// export default ExpensePage;
