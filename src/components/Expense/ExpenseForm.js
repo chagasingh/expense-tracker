@@ -160,8 +160,10 @@ const ExpenseForm = (props) => {
           <div>
               <button>Submit</button>
             </div>
-        </form>
+        </form><br/>
       </div>
+      <div className={classes.text}>
+      <h2>Your Expenses...</h2></div>
       {printexpense.map((item) => (
         <ExpenseInput
           key={item.__id}

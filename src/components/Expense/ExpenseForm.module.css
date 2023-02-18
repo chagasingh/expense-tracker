@@ -35,7 +35,7 @@
 
 .expensefrom input {
     border:0.5px solid brown;
-    margin:5px ;
+    margin:5px;
     border-radius:4px;
 
 }
@@ -43,4 +43,13 @@
     border:0.5px solid brown;
     margin:5px ;
     border-radius:4px;
+}
+
+.text{
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    margin-top: 3%;
+    text-align: center;
+    color: antiquewhite;
+    background-color: #12c1df;
 }

@@ -1,9 +1,8 @@
 .expenseInput {
-    border: 2px solid rgb(37, 32, 32);
-        background-color: rgb(159, 207, 116);
+    border: 2px solid rgb(1, 53, 173);
+        background-color: rgb(255, 197, 117);
         border-radius: 20px;
-    
-        margin: 50px 10px auto 100px;
+        margin-top: 1%;
         padding-top: 0%;
         text-decoration: none;
 

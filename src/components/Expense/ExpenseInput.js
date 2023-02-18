@@ -43,8 +43,8 @@ if(response.ok){
   return (
     <React.Fragment>
       <div className={classes.expenseInput}>
-       
-          <ul><li>
+          <ul>
+            <li>
               <label>Expense Amount</label>
               <span className={classes.data}>{props.item.enteredExpense} </span>
               <label>Details</label>
@@ -57,7 +57,7 @@ if(response.ok){
               <span>
                 <button  onClick={()=>deleteHandler(props.item)}>Delete</button>
               </span>
-              <hr></hr>
+              <hr/>
               </li></ul>
        
       </div>
