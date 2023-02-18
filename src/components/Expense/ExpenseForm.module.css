@@ -1,0 +1,46 @@
+.expensefrom {
+    border: 1px solid rgb(13, 10, 10);
+        background-color: rgb(255, 154, 11);
+        border-radius: 20px;
+        color: rgb(248, 247, 247);
+        margin: 5px 5px auto 2px;
+        padding: 10px;
+        display: inline-block;
+}
+.input {
+    display: flex;
+
+}
+.input label{
+     margin-left:25px;
+    margin-right: 5px;
+}
+.expensefrom button {
+    margin-top: 3%;
+    font: inherit;
+    background-color: blue;
+    border: 1px solid rgb(2, 2, 2);
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 2rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.expensefrom button:hover {
+        background-color: #0a178d;
+        color: #fdfbff;
+    }
+
+
+.expensefrom input {
+    border:0.5px solid brown;
+    margin:5px ;
+    border-radius:4px;
+
+}
+.expensefrom select{
+    border:0.5px solid brown;
+    margin:5px ;
+    border-radius:4px;
+}
