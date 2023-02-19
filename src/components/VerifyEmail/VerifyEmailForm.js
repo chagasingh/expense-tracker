@@ -1,11 +1,10 @@
-import { Fragment,useRef,useContext } from "react";
-import AuthContext from "../../store/auth-context";
+import { Fragment} from "react";
 import classes from './VerifyEmailForm.module.css'
-
+import { useSelector } from "react-redux";
 const VerifyEmailForm=()=>{
 
     // const emailInputRef=useRef();
-    const AuthCtx=useContext(AuthContext);
+    const idtoken = useSelector((state)=>state.auth.token)
   
     const submitHandler=(event)=>{
       event.preventDefault();
@@ -16,7 +15,7 @@ const VerifyEmailForm=()=>{
       {
         method: 'POST',
         body: JSON.stringify({
-          idToken: AuthCtx.token,
+          idToken: idtoken,
           requestType:"VERIFY_EMAIL"
         }),
         headers: {

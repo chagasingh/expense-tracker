@@ -1,45 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { removingExpenses } from "./expenses-actions";
 import classes from "./ExpenseInput.module.css";
 const ExpenseInput = (props) => {
-  console.log(props.item, "from inpuptpage");
-  const deleteHandler = (item) => {
-    props.onRemove(item);
-    const inputid = item.id
-    ;
-    fetch(
-      `https://react-movie-c353a-default-rtdb.firebaseio.com/Expense/${inputid}.json`,{
-        method:'DELETE',
-       
-      }
-    ).then((res)=>{
-      console.log(res)
-    })
-    .catch((err)=>{
-      console.log(err.message)
-    })
-    console.log(inputid, "id from detelfunction expenseform ");
-  };
-  const EditHandler = async (item)=>{
-    const inputid = item.id
-try{
-  const response = await fetch(
-    `https://react-movie-c353a-default-rtdb.firebaseio.com/Expense/${inputid}.json`,{
-      method:'DELETE',
-      headers:{
-        'Content-Type':'application/json'
-      },
-})
-const data = await response.json()
-if(response.ok){
-  props.EditExpenseHandler(item)
-}else{
-  throw data.erro
-}
-}catch(error){
-  console.log(error.message)
-}
-  }
 
+  const dispatch = useDispatch();
+  const deleteHandler = (item) => {
+   dispatch(removingExpenses(item.id))
+  };
+
+  const EditHandler = item => {
+    props.EditExpenseHandler(item)
+  }
   return (
     <React.Fragment>
       <div className={classes.expenseInput}>

@@ -6,7 +6,6 @@ import AuthContext from '../../store/auth-context';
 const ForgotPassword = () => {
 
   const emailInputRef=useRef();
-  const AuthCtx=useContext(AuthContext);
 
   const [isLoading,setIsLoading] = useState(false)
 

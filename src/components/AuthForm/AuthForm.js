@@ -1,7 +1,8 @@
-import { useState, useRef ,useContext} from "react";
-import AuthContext from "../../store/auth-context";
+import { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import {useDispatch } from "react-redux";
+import { authActions } from "../../store/auth-redux";
 
 import classes from "./AuthForm.module.css";
 
@@ -10,7 +11,7 @@ const AuthForm = () => {
   const emailItnputRef = useRef();
   const passwordInputRef = useRef();
 
-  const AuthCtx=useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const [isLogin, setIsLogin] = useState(true);
    const [isLoading,setIsLoading] = useState(false)
@@ -57,7 +58,10 @@ let url;
         }
       })
       .then((data)=>{
-        AuthCtx.login(data.idToken)
+        // AuthCtx.login(data.idToken)
+        dispatch(authActions.login(data.idToken));
+          localStorage.setItem("token", data.idToken);
+          localStorage.setItem("email", data.email);
         history.replace('/home')
       })
       .catch((err)=>{
