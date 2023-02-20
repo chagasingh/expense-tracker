@@ -3,7 +3,7 @@ import classes from "./ExpenseForm.module.css";
 import ExpenseInput from "./ExpenseInput";
 import React, { Fragment, useEffect, useState } from "react";
 
-import { ExpenseAction, themeAction } from "../../store/auth-redux";
+import { themeAction } from "../../store/auth-redux";
 import { useSelector, useDispatch } from "react-redux";
 import { CSVLink } from "react-csv";
 import { addingExpenses, EditingExpenses } from "./expenses-actions";

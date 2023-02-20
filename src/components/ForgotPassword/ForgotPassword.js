@@ -1,7 +1,6 @@
 import classes from './ForgotPassword.module.css';
-import { useRef,useContext ,useState} from 'react';
-// import { useHistory } from 'react-router-dom';
-import AuthContext from '../../store/auth-context';
+import { useRef,useState} from 'react';
+// import { useHistory } from 'react-router-dom'
 
 const ForgotPassword = () => {
 

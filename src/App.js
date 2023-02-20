@@ -11,7 +11,7 @@ import ForgotPassword from './components/ForgotPassword/ForgotPassword'
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import './components/AuthForm/Dark_lightMode.css'
-import {authActions,ExpenseAction,themeAction} from "./store/auth-redux";
+import {themeAction} from "./store/auth-redux";
 import { fectingAllData } from "./components/Expense/expenses-actions";
 
 
@@ -22,7 +22,7 @@ function App() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const darkMode = useSelector((state) => state.theme.darkMode);
-  const premium = useSelector((state) => state.theme.premium);
+  // const premium = useSelector((state) => state.theme.premium);
   const activePremium = useSelector((state) => state.theme.cvandDark);
 
   const toggleThem = () => {
