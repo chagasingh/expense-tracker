@@ -2,7 +2,6 @@
 import { Fragment } from 'react';
 import { Route, Switch} from 'react-router-dom';
 import AuthForm from './components/AuthForm/AuthForm'
-// import MainNavigation from './components/Layout/MainNavigation';
 import ProfileForm from './components/Profile/ProfileForm';
 import Layout from './components/Layout/Layout';
 import StartingPageContent from './components/StartingPage/StartingPageContent';
@@ -11,11 +10,12 @@ import ForgotPassword from './components/ForgotPassword/ForgotPassword'
 
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import './components/AuthForm/Dark_lightMode.css'
 import {authActions,ExpenseAction,themeAction} from "./store/auth-redux";
-// import ReactSwitch from "react-js-switch";
 import { fectingAllData } from "./components/Expense/expenses-actions";
-import { Suspense } from "react";
+
+
+
 
 function App() {
 
@@ -27,6 +27,7 @@ function App() {
 
   const toggleThem = () => {
     dispatch(themeAction.changeTheme());
+    console.log('change theme called')
   };
 
   useEffect(() => {
@@ -35,11 +36,12 @@ function App() {
 
   return (
     <Fragment>
+      <div id={darkMode}>
       <Layout/>
         {isLoggedIn && activePremium && (
           <div className="switch">
             <label>{darkMode === "light" ? "Light Mode" : "Dark Mode"}</label>
-            {/* <ReactSwitch onChange={toggleThem} /> */}
+            <button onClick={toggleThem}>toggle</button>
           </div>
         )}
       <Switch>
@@ -59,6 +61,7 @@ function App() {
           <ForgotPassword/>
         </Route>
       </Switch>
+      </div>
     </Fragment>
   );
 }

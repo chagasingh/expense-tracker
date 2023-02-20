@@ -5,7 +5,7 @@ import React, { Fragment, useEffect, useState } from "react";
 
 import { ExpenseAction, themeAction } from "../../store/auth-redux";
 import { useSelector, useDispatch } from "react-redux";
-// import { CSVLink } from "react-csv";
+import { CSVLink } from "react-csv";
 import { addingExpenses, EditingExpenses } from "./expenses-actions";
 
 
@@ -21,6 +21,7 @@ const ExpenseForm = (props) => {
   const [enteredCategory, setEnteredCategory] = useState("");
   const [itemToBeEdit, setItemToBeEdit] = useState(false);
   const [premium, setPrmium] = useState(false);
+
   const activePremiumHandler = () => {
     dispatch(themeAction.cvDarkMode(true));
     setPrmium(true)
@@ -36,6 +37,7 @@ const ExpenseForm = (props) => {
     headers: headers,
     data: showExpense,
   };
+
   const EditExpenseHandler = (data) => {
     setEnteredExpense(data.enteredExpense);
     setEnteredDetails(data.enteredDetails);
@@ -115,6 +117,11 @@ const ExpenseForm = (props) => {
 
   return (
     <Fragment>
+      {premium && (
+        <div className={classes.premium}>
+          <button onClick={activePremiumHandler}>Active Premium</button>
+        </div>
+      )}<br/>
       <div className={classes.expensefrom}>
         <h2>EXPENSE TRACKER</h2>
         <form onSubmit={SubmitHandler}>
@@ -179,11 +186,11 @@ const ExpenseForm = (props) => {
      </div>
      {premium && activePremium && (
        <div className={classes.csv}>
-         {/* <CSVLink {...csvLink}>
-           <button>Download CSV</button>
-         </CSVLink> */}
+        <CSVLink {...csvLink}>
+           <button>Premimum Only Download CSV</button>
+        </CSVLink>
        </div>
-     )}
+     )}<br/>
    </Fragment>
   );
 };

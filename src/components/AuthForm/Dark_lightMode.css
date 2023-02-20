@@ -1,0 +1,38 @@
+#light {
+    background-color: #f9f6f9;
+  }
+  
+  #dark {
+    background-color: #56371d;
+  }
+.switch {
+    display: flex;
+    width: 100vw;
+    height: 0px;
+    justify-content: center;
+    align-items: center;
+  }
+  .switch button{
+    font: inherit;
+    background-color: rgb(239, 235, 25);
+    border: 1px solid white;
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem 5rem;
+    border-radius: 6px;
+    margin-left: 2%;
+    cursor: pointer;
+  }
+
+  .switch button:hover {
+    background-color: #091104;
+    color: #ffffff;
+  }
+
+  #light .switch label {
+    color: black;
+  }
+  
+  #dark .switch label {
+    color: white;
+  }
