@@ -45,29 +45,6 @@ const ExpenseForm = (props) => {
     setItemToBeEdit(true);
     id = data.id;
   };
-  // const EditExpenseHandler = (item) => {
-  //   amountRef.current.value = item.enteredExpense;
-  //   DetailRef.current.value = item.enteredDetails;
-  //   CategoryRef.current.value = item.enteredCategory;
-
-  //   const updatedExpense = printexpense.filter((expense) => {
-  //     return expense.id !== item.id;
-  //   });
-  //   setPrintExpense(updatedExpense);
-  // };
-  // /********************************** */
-
-  // console.log(printexpense, "from expnesepage");
-  // const removeItemHanler = (data) => {
-  //   let removeitem = printexpense.findIndex((item) => item.id === data.id);
-  //   const arr = [...printexpense];
-  //   const updateItems = arr.splice(removeitem, 1);
-  //   console.log(updateItems);
-
-  //   setPrintExpense(arr);
-  // };
-
-
 
   const expenseHandler = (event) => {
     setEnteredExpense(event.target.value);
@@ -113,7 +90,7 @@ const ExpenseForm = (props) => {
     }else {
       setPrmium(false)
     }
-   },[totalAmount]) 
+   },[]) 
 
   return (
     <Fragment>

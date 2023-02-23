@@ -4,15 +4,14 @@ if (!localStorage.getItem("email")) {
   localStorage.setItem("email", "");
 }
 
- let  email = localStorage.getItem("email").replace(".", "").replace("@", "");
+ const  email = localStorage.getItem("email").replace(".", "").replace("@", "");
+ console.log(`local storage email ${email}`)
 
- //const email = emailid.replace(".", "").replace("@", "")
 export const fectingAllData = () => {
   return async (dispatch) => {
     const fecthData = async () => {
-      try {
         const res = await axios.get(
-          `https://react-movie-c353a-default-rtdb.firebaseio.com/Expense${email}.json`
+          `https://react-movie-c353a-default-rtdb.firebaseio.com/${email}.json`
         );
         const loadedExpenses = [];
         for (const key in res.data) {
@@ -23,10 +22,8 @@ export const fectingAllData = () => {
             enteredCategory: res.data[key].enteredCategory,
           });
         }
+        console.log(`fetch req done ${email}`)
         return loadedExpenses;
-      } catch (error) {
-        console.log(error);
-      }
     };
     const data = await fecthData();
     dispatch(ExpenseAction.fetchAllexpenses(data));
@@ -36,15 +33,13 @@ export const fectingAllData = () => {
 export const addingExpenses = (obj) => {
   return async (dispatch) => {
     const addExpense = async () => {
-      try {
         const res = await axios.post(
-          `https://react-movie-c353a-default-rtdb.firebaseio.com/Expense${email}.json`,
+          `https://react-movie-c353a-default-rtdb.firebaseio.com/${email}.json`,
           obj
         );
+        console.log(`post req done ${email} `)
         return res.data;
-      } catch (error) {
-        console.log(error);
-      }
+
     };
     const id = await addExpense();
     const temp = { id: id, ...obj };

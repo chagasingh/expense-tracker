@@ -15,6 +15,10 @@ const MainNavigation = () => {
 
   const logoutHandler=()=>{
     dispatch(authActions.logout(null))
+    localStorage.removeItem("email")
+    localStorage.removeItem("profile")
+    localStorage.removeItem("token")
+    localStorage.removeItem("data")
       history.replace('/login')
       }
 
@@ -55,14 +59,14 @@ const MainNavigation = () => {
             console.log('data is saved to local storange')
           })
           .catch((err) => {
-            alert(err.message);
+            console.log(err.message);
           });
-      }, []);
+      }, [idtoken]);
 
   return (
     <header className={classes.header}>
       <Link to='/'>
-        <div className={classes.logo}>React Auth</div>
+        <div className={classes.logo}>Expence Tracker</div>
       </Link>
       <nav>
         <ul>{
